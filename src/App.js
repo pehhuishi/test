@@ -5,27 +5,23 @@ import { add, subtract } from './actions'
 
 class App extends Component {
   
-  render() {
+  renderProgressbar = () => {
     const { bars } = this.props;
-    console.log({bars});
-
-    return bars.map((value, index) => {
-      
+    return bars.map((value, index) =>
       <div className="progress" key={index}>
         <div className="progress-bar" role="progressbar" aria-valuenow={value}  aria-valuemin="0" aria-valuemax="100">{value}</div>
       </div>
+    );
+  }
 
-      return(
-        <div className="App">
-        
-
-
-          <button onClick={this.props.add}>+</button>
-          <button onClick={this.props.subtract}>-</button>
-        </div>
-      );
-    });
-
+  render() {
+    return(
+      <div className="App">
+        {this.renderProgressbar()}
+        <button onClick={this.props.add}>+</button>
+        <button onClick={this.props.subtract}>-</button>
+      </div>
+    );
   }
 }
 
